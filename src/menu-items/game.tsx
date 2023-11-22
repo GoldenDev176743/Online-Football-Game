@@ -2,7 +2,7 @@
 import { FormattedMessage } from 'react-intl';
 
 // assets
-import { DribbbleOutlined, HistoryOutlined, TableOutlined } from '@ant-design/icons';
+import { RedditOutlined, HistoryOutlined, TableOutlined } from '@ant-design/icons';
 
 // type
 import { NavItemType } from 'types/menu';
@@ -13,7 +13,7 @@ const game: NavItemType = {
   id: 'game',
   title: <FormattedMessage id="game" />,
   type: 'group',
-  icon: DribbbleOutlined,
+  icon: RedditOutlined,
   children: [
     {
       id: 'match',

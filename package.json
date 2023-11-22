@@ -23,6 +23,7 @@
     "chance": "^1.1.11",
     "crypto-browserify": "^3.12.0",
     "csstype": "^3.0.10",
+    "emoji-picker-react": "^4.5.16",
     "formik": "^2.2.9",
     "framer-motion": "^10.12.2",
     "history": "^5.3.0",

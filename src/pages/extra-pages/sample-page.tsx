@@ -8,9 +8,7 @@ import MainCard from 'components/MainCard';
 
 const SamplePage = () => (
   <MainCard title="Sample Card">
-    <Typography variant="body2">
-      This is Sample Page.
-    </Typography>
+    <Typography variant="body2">This is Sample Page.</Typography>
   </MainCard>
 );
 
