@@ -12,6 +12,7 @@ import 'assets/third-party/apex-chart.css';
 import 'assets/third-party/react-table.css';
 
 // project import
+import './index.css';
 import App from './App';
 import { store } from 'store';
 import { ConfigProvider } from 'contexts/ConfigContext';

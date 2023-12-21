@@ -43,7 +43,7 @@ function Error404() {
             <Typography color="textSecondary" align="center" sx={{ width: { xs: '73%', sm: '61%' } }}>
               The page you are looking was moved, removed, renamed, or might never exist!
             </Typography>
-            <Button component={Link} to={APP_DEFAULT_PATH} variant="contained">
+            <Button component={Link} to={APP_DEFAULT_PATH} variant="shadow">
               Back To Home
             </Button>
           </Stack>

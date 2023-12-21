@@ -75,7 +75,7 @@ function ComingSoon() {
             </Typography>
             <Stack direction="row" spacing={1}>
               <TextField fullWidth placeholder="Email Address" />
-              <Button variant="contained" sx={{ width: '50%' }}>
+              <Button variant="shadow" sx={{ width: '50%' }}>
                 Notify Me
               </Button>
             </Stack>

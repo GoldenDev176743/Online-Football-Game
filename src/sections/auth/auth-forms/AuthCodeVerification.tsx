@@ -48,7 +48,7 @@ const AuthCodeVerification = () => {
       </Grid>
       <Grid item xs={12}>
         <AnimateButton>
-          <Button disableElevation fullWidth size="large" type="submit" variant="contained">
+          <Button disableElevation fullWidth size="large" type="submit" variant="shadow">
             Continue
           </Button>
         </AnimateButton>

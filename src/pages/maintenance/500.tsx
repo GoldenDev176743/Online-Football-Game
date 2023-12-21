@@ -32,7 +32,7 @@ function Error500() {
             <Typography color="textSecondary" variant="body2" align="center" sx={{ width: { xs: '73%', sm: '70%' }, mt: 1 }}>
               Server error 500. we fixing the problem. please try again at a later stage.
             </Typography>
-            <Button component={Link} to={APP_DEFAULT_PATH} variant="contained" sx={{ textTransform: 'none', mt: 4 }}>
+            <Button component={Link} to={APP_DEFAULT_PATH} variant="shadow" sx={{ textTransform: 'none', mt: 4 }}>
               Back To Home
             </Button>
           </Stack>

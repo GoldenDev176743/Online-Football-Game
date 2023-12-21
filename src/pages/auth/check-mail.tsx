@@ -37,7 +37,7 @@ const CheckMail = () => {
               fullWidth
               size="large"
               type="submit"
-              variant="contained"
+              variant="shadow"
               color="primary"
             >
               Sign in

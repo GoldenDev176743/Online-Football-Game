@@ -27,7 +27,7 @@ function UnderConstruction() {
           <Typography color="textSecondary" align="center" sx={{ width: '85%' }}>
             Hey! Please check out this site later. We are doing some maintenance on it right now.
           </Typography>
-          <Button component={Link} to={APP_DEFAULT_PATH} variant="contained">
+          <Button component={Link} to={APP_DEFAULT_PATH} variant="shadow">
             Back To Home
           </Button>
         </Stack>
