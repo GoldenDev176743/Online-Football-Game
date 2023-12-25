@@ -1,6 +1,6 @@
 {
-  "name": "mantis-react-ts",
-  "version": "2.1.0",
+  "name": "online-football-game",
+  "version": "1.0",
   "private": true,
   "dependencies": {
     "@ant-design/colors": "^7.0.0",
