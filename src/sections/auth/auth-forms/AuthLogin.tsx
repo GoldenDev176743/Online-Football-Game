@@ -27,6 +27,9 @@ import AnimateButton from 'components/@extended/AnimateButton';
 import useAuth from 'hooks/useAuth';
 import useScriptRef from 'hooks/useScriptRef';
 
+import { dispatch } from 'store';
+import { openSnackbar } from 'store/reducers/snackbar';
+
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
@@ -51,27 +54,49 @@ const AuthLogin = () => {
     <>
       <Formik
         initialValues={{
-          email: 'info@codedthemes.com',
-          password: '123456',
+          username: '',
+          password: '',
           submit: null
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+          username: Yup.string().max(255).required('Email is required'),
           password: Yup.string().max(255).required('Password is required')
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
-            await login(values.email, values.password);
+            await login(values.username, values.password);
             if (scriptedRef.current) {
               setStatus({ success: true });
               setSubmitting(false);
+              dispatch(
+                openSnackbar({
+                  open: true,
+                  message: 'User login successfully.',
+                  variant: 'alert',
+                  alert: {
+                    color: 'success'
+                  },
+                  close: false
+                })
+              );
             }
           } catch (err: any) {
             console.error(err);
             if (scriptedRef.current) {
               setStatus({ success: false });
-              setErrors({ submit: err.message });
+              setErrors({ submit: err[0].message });
               setSubmitting(false);
+              // dispatch(
+              //   openSnackbar({
+              //     open: true,
+              //     message: err[0].message,
+              //     variant: 'alert',
+              //     alert: {
+              //       color: 'error'
+              //     },
+              //     close: false
+              //   })
+              // );
             }
           }
         }}
@@ -81,21 +106,21 @@ const AuthLogin = () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-login">Email Address</InputLabel>
+                  <InputLabel htmlFor="username-login">User Name</InputLabel>
                   <OutlinedInput
-                    id="email-login"
-                    type="email"
-                    value={values.email}
-                    name="email"
+                    id="username-login"
+                    type="username"
+                    value={values.username}
+                    name="username"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Enter email address"
+                    placeholder="Enter username"
                     fullWidth
-                    error={Boolean(touched.email && errors.email)}
+                    error={Boolean(touched.username && errors.username)}
                   />
-                  {touched.email && errors.email && (
-                    <FormHelperText error id="standard-weight-helper-text-email-login">
-                      {errors.email}
+                  {touched.username && errors.username && (
+                    <FormHelperText error id="standard-weight-helper-text-username-login">
+                      {errors.username}
                     </FormHelperText>
                   )}
                 </Stack>

@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 
 // third-party
-import { Chance } from 'chance';
+// import { Chance } from 'chance';
 import jwtDecode from 'jwt-decode';
 
 // reducer - state management
@@ -14,7 +14,7 @@ import axios from 'utils/axios';
 import { KeyedObject } from 'types/root';
 import { AuthProps, JWTContextType } from 'types/auth';
 
-const chance = new Chance();
+// const chance = new Chance();
 
 // constant
 const initialState: AuthProps = {
@@ -82,8 +82,8 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     init();
   }, []);
 
-  const login = async (email: string, password: string) => {
-    const response = await axios.post('/api/account/login', { email, password });
+  const login = async (username: string, password: string) => {
+    const response = await axios.post('/api/v1/user/login', { username, password });
     const { serviceToken, user } = response.data;
     setSession(serviceToken);
     dispatch({
@@ -95,15 +95,17 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     });
   };
 
-  const register = async (email: string, password: string, firstName: string, lastName: string) => {
+  const register = async (username: string, gender: string, email: string, team_id: string, password: string, sound: boolean) => {
     // todo: this flow need to be recode as it not verified
-    const id = chance.bb_pin();
-    const response = await axios.post('/api/account/register', {
-      id,
+    // const id = chance.bb_pin();
+
+    const response = await axios.post('/api/v1/user/register', {
+      username,
+      gender,
       email,
+      team_id,
       password,
-      firstName,
-      lastName
+      sound
     });
     let users = response.data;
 
@@ -112,10 +114,9 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
       users = [
         ...JSON.parse(localUsers!),
         {
-          id,
           email,
           password,
-          name: `${firstName} ${lastName}`
+          name: `${username}`
         }
       ];
     }

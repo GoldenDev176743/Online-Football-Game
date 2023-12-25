@@ -3,16 +3,25 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // material-ui
 import {
+  Autocomplete,
   Box,
   Button,
+  createFilterOptions,
   FormControl,
+  FormControlLabel,
   FormHelperText,
   Grid,
   Link,
+  ListItemText,
+  MenuItem,
   InputAdornment,
   InputLabel,
   OutlinedInput,
   Stack,
+  Select,
+  SelectChangeEvent,
+  Switch,
+  TextField,
   Typography
 } from '@mui/material';
 
@@ -29,12 +38,19 @@ import useScriptRef from 'hooks/useScriptRef';
 import { dispatch } from 'store';
 import { openSnackbar } from 'store/reducers/snackbar';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
+import axios from 'utils/axios';
 
 // types
 import { StringColorProps } from 'types/password';
+import { TeamInfoProps } from 'types/teaminfo';
 
 // assets
-import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { EyeOutlined, EyeInvisibleOutlined, DownOutlined } from '@ant-design/icons';
+
+const filter = createFilterOptions<string>();
+
+const AllGender = ['Male', 'Female'];
+const AllTeams = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
 // ============================|| JWT - REGISTER ||============================ //
 
@@ -62,26 +78,42 @@ const AuthRegister = () => {
     changePassword('');
   }, []);
 
+  const [teamName, setTeamName] = useState<string[]>(['']);
+  const [teamInfo, setTeamInfo] = useState<TeamInfoProps[]>([{ _id: '', name: '', division: '' }]);
+
+  useEffect(() => {
+    const fetchTeamInfo = async () => {
+      const response = await axios.get('api/v1/team');
+      setTeamInfo(response.data[0].teams);
+      setTeamName(response.data[0].teams.map((team: TeamInfoProps) => team.name));
+    };
+
+    fetchTeamInfo();
+  }, []);
+
   return (
     <>
       <Formik
         initialValues={{
-          firstname: '',
-          lastname: '',
+          username: '',
+          gender: '',
           email: '',
-          company: '',
+          teamname: '',
           password: '',
+          sound: true,
           submit: null
         }}
         validationSchema={Yup.object().shape({
-          firstname: Yup.string().max(255).required('First Name is required'),
-          lastname: Yup.string().max(255).required('Last Name is required'),
+          username: Yup.string().max(255).required('Username is required'),
+          gender: Yup.string().max(255).required('Gender is required'),
           email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+          teamname: Yup.string().required('Team is required'),
           password: Yup.string().max(255).required('Password is required')
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
-            await register(values.email, values.password, values.firstname, values.lastname);
+            const team_id = teamInfo.filter((team) => team.name.includes(values.teamname))[0]._id;
+            await register(values.username, values.gender, values.email, team_id, values.password, values.sound);
             if (scriptedRef.current) {
               setStatus({ success: true });
               setSubmitting(false);
@@ -102,85 +134,85 @@ const AuthRegister = () => {
               }, 1500);
             }
           } catch (err: any) {
-            console.error(err);
+            console.error('error----------------->', err);
             if (scriptedRef.current) {
               setStatus({ success: false });
-              setErrors({ submit: err.message });
+              setErrors({ submit: err[0].message });
               setSubmitting(false);
+              // dispatch(
+              //   openSnackbar({
+              //     open: true,
+              //     message: err[0].message,
+              //     variant: 'alert',
+              //     alert: {
+              //       color: 'error'
+              //     },
+              //     close: false
+              //   })
+              // );
             }
           }
         }}
       >
-        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+        {({ errors, handleBlur, handleChange, handleSubmit, getFieldProps, setFieldValue, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={7}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
+                  <InputLabel htmlFor="username-signup">User Name</InputLabel>
                   <OutlinedInput
-                    id="firstname-login"
-                    type="firstname"
-                    value={values.firstname}
-                    name="firstname"
+                    id="username-login"
+                    type="username"
+                    value={values.username}
+                    name="username"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     placeholder="John"
                     fullWidth
-                    error={Boolean(touched.firstname && errors.firstname)}
+                    error={Boolean(touched.username && errors.username)}
                   />
-                  {touched.firstname && errors.firstname && (
-                    <FormHelperText error id="helper-text-firstname-signup">
-                      {errors.firstname}
+                  {touched.username && errors.username && (
+                    <FormHelperText error id="helper-text-username-signup">
+                      {errors.username}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={5}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.lastname && errors.lastname)}
-                    id="lastname-signup"
-                    type="lastname"
-                    value={values.lastname}
-                    name="lastname"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="Doe"
-                    inputProps={{}}
-                  />
-                  {touched.lastname && errors.lastname && (
-                    <FormHelperText error id="helper-text-lastname-signup">
-                      {errors.lastname}
-                    </FormHelperText>
-                  )}
-                </Stack>
-              </Grid>
-              <Grid item xs={12}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">Company</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.company && errors.company)}
-                    id="company-signup"
-                    value={values.company}
-                    name="company"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="Demo Inc."
-                    inputProps={{}}
-                  />
-                  {touched.company && errors.company && (
-                    <FormHelperText error id="helper-text-company-signup">
-                      {errors.company}
+                  <InputLabel htmlFor="gender">Gender</InputLabel>
+                  <FormControl fullWidth>
+                    <Select
+                      id="column-hiding"
+                      displayEmpty
+                      {...getFieldProps('gender')}
+                      onChange={(event: SelectChangeEvent<string>) => setFieldValue('gender', event.target.value as string)}
+                      input={<OutlinedInput id="select-column-hiding" placeholder="Sort by" />}
+                      renderValue={(selected) => {
+                        if (!selected) {
+                          return <Typography variant="subtitle1">--------------</Typography>;
+                        }
+
+                        return <Typography variant="subtitle2">{selected}</Typography>;
+                      }}
+                    >
+                      {AllGender.map((column: any) => (
+                        <MenuItem key={column} value={column}>
+                          <ListItemText primary={column} />
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  {touched.gender && errors.gender && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login" sx={{ pl: 1.75 }}>
+                      {errors.gender}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
+                  <InputLabel htmlFor="email-signup">Email Address</InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
@@ -249,6 +281,90 @@ const AuthRegister = () => {
                     </Grid>
                   </Grid>
                 </FormControl>
+              </Grid>
+              <Grid item xs={12} md={8}>
+                <Stack spacing={1}>
+                  <InputLabel htmlFor="teamname">Team</InputLabel>
+                  <Grid item xs={12}>
+                    <Autocomplete
+                      fullWidth
+                      value={values.teamname}
+                      disableClearable
+                      onChange={(event, newValue) => {
+                        const teamExist = teamName.includes(newValue);
+                        if (!teamExist) {
+                          const matchData = newValue.match(/"((?:\\.|[^"\\])*)"/);
+                          setFieldValue('teamname', matchData && matchData[1]);
+                        } else {
+                          setFieldValue('teamname', newValue);
+                        }
+                      }}
+                      filterOptions={(options, params) => {
+                        const filtered = filter(options, params);
+                        const { inputValue } = params;
+                        const isExisting = options.some((option) => inputValue === option);
+                        if (inputValue !== '' && !isExisting) {
+                          filtered.push(`Add "${inputValue}"`);
+                        }
+                        return filtered;
+                      }}
+                      selectOnFocus
+                      clearOnBlur
+                      autoHighlight
+                      handleHomeEndKeys
+                      id="free-solo-with-text-demo"
+                      options={teamName}
+                      getOptionLabel={(option: string) => {
+                        let value = option;
+                        const jobExist = AllTeams.includes(option);
+                        if (!jobExist) {
+                          const matchData = option.match(/"((?:\\.|[^"\\])*)"/);
+                          if (matchData && matchData[1]) value = matchData && matchData[1];
+                        }
+                        return value;
+                      }}
+                      renderOption={(props, option) => {
+                        return (
+                          <Box component="li" {...props}>
+                            {option}
+                          </Box>
+                        );
+                      }}
+                      freeSolo
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          name="team_id"
+                          error={touched.teamname && Boolean(errors.teamname)}
+                          helperText={touched.teamname && errors.teamname && errors.teamname}
+                          placeholder="Select Team"
+                          InputProps={{
+                            ...params.InputProps,
+                            // sx: { bgcolor: 'grey.0' },
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <DownOutlined />
+                                {/* <ArrowDropDown sx={{ color: 'text.primary' }} /> */}
+                              </InputAdornment>
+                            )
+                          }}
+                        />
+                      )}
+                    />
+                  </Grid>
+                  {/* {errors.teamname && (
+                    <FormHelperText error id="standard-weight-helper-text-email-login" sx={{ pl: 1.75 }}>
+                      {errors.teamname}
+                    </FormHelperText>
+                  )} */}
+                </Stack>
+              </Grid>
+              <Grid item xs={12} md={4} alignSelf={'center'}>
+                <FormControlLabel
+                  control={<Switch sx={{ mt: 0 }} checked={values.sound} {...getFieldProps('sound')} />}
+                  label="Sound"
+                  labelPlacement="start"
+                />
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body2">
