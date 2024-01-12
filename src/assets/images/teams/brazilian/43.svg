@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="3in"
+   height="3in"
+   viewBox="0 0 216 216"
+   id="svg20"
+   sodipodi:docname="ferroviario_ac-ce.cdr"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs20" />
+  <sodipodi:namedview
+     id="namedview20"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="in" />
+  <g
+     id="Layer1003">
+    <path
+       d="M 50.1985,51.7669 H 165.8018 V 96.5835 L 108.0001,164.2334 50.1985,96.5835 Z"
+       style="fill:#1b1918;fill-rule:evenodd"
+       id="path10" />
+    <path
+       d="M 53.9764,55.5446 H 162.0238 V 95.1894 L 108.0001,158.4177 53.9764,95.1894 Z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path11" />
+    <path
+       d="M 98.5554,138.6403 61.4297,95.1894 h 37.1257 z"
+       style="fill:#e30016;fill-rule:evenodd"
+       id="path12" />
+    <path
+       d="m 59.6433,61.2115 h 96.7135 v 28.311 H 59.6433 Z"
+       style="fill:#1b1918;fill-rule:evenodd"
+       id="path13" />
+    <path
+       d="m 154.5706,95.1894 -37.1258,43.4509 V 95.1894 Z"
+       style="fill:#1b1918;fill-rule:evenodd"
+       id="path14" />
+    <path
+       d="m 84.8534,80.9373 c -1.4569,0 -2.6445,1.1879 -2.6445,2.6445 0,1.4568 1.1876,2.6447 2.6445,2.6447 1.4569,0 2.6444,-1.1879 2.6444,-2.6447 0,-1.4566 -1.1875,-2.6445 -2.6444,-2.6445 z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path15" />
+    <path
+       d="m 152.2684,80.9373 c -1.4569,0 -2.6449,1.1879 -2.6449,2.6445 0,1.4568 1.188,2.6447 2.6449,2.6447 1.4567,0 2.6443,-1.1879 2.6443,-2.6447 0,-1.4566 -1.1876,-2.6445 -2.6443,-2.6445 z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path16" />
+    <path
+       d="m 121.0154,80.9373 c -1.4569,0 -2.6449,1.1879 -2.6449,2.6445 0,1.4568 1.188,2.6447 2.6449,2.6447 1.4565,0 2.6443,-1.1879 2.6443,-2.6447 0,-1.4566 -1.1878,-2.6445 -2.6443,-2.6445 z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path17" />
+    <path
+       d="M 69.4297,68.8345 H 80.2895 V 64.026 H 62.8877 v 21.9904 h 6.542 V 77.9531 H 79.439 V 73.1446 H 69.4297 Z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path18" />
+    <path
+       d="m 109.0736,82.2339 1.2757,3.7825 h 6.6725 L 109.5641,64.026 h -9.9439 l -7.365,21.9904 h 6.8091 l 1.2099,-3.7825 z m -1.3087,-4.2808 h -6.0839 l 2.9765,-9.5292 h 0.0653 z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path19" />
+    <path
+       d="m 141.7839,77.6895 v 0.6449 c 0,2.5802 -1.3086,2.7558 -4.0233,2.7558 -3.9256,0 -4.089,-1.2604 -4.089,-4.5444 v -3.4306 c 0,-3.1371 0.3599,-4.1636 4.089,-4.1636 2.2242,0 3.7615,0.1469 3.9903,2.1112 v 0.8502 h 6.7384 v -0.8502 c -0.1306,-6.5971 -3.2708,-7.2127 -10.0092,-7.2127 -7.1962,0 -11.5468,1.0554 -11.5468,8.327 v 5.688 c 0,8.0342 4.8738,8.3321 11.5468,8.3321 2.8458,0 5.5606,0.0291 7.7848,-1.6175 2.2244,-1.6714 2.2573,-3.8411 2.2573,-6.2453 v -0.6449 z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path20" />
+  </g>
+</svg>

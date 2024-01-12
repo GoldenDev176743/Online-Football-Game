@@ -1,27 +1,17 @@
-import React, { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useEffect } from 'react';
 
 // third-party
-// import { Chance } from 'chance';
 import jwtDecode from 'jwt-decode';
 
 // reducer - state management
 import { LOGIN, LOGOUT } from 'store/reducers/actions';
-import authReducer from 'store/reducers/auth';
+import { useDispatch, useSelector } from 'store';
 
 // project import
 import Loader from 'components/Loader';
 import axios from 'utils/axios';
 import { KeyedObject } from 'types/root';
-import { AuthProps, JWTContextType } from 'types/auth';
-
-// const chance = new Chance();
-
-// constant
-const initialState: AuthProps = {
-  isLoggedIn: false,
-  isInitialized: false,
-  user: null
-};
+import { JWTContextType } from 'types/auth';
 
 const verifyToken: (st: string) => boolean = (serviceToken) => {
   if (!serviceToken) {
@@ -49,7 +39,8 @@ const setSession = (serviceToken?: string | null) => {
 const JWTContext = createContext<JWTContextType | null>(null);
 
 export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
-  const [state, dispatch] = useReducer(authReducer, initialState);
+  const state = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const init = async () => {
@@ -57,13 +48,13 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
         const serviceToken = window.localStorage.getItem('serviceToken');
         if (serviceToken && verifyToken(serviceToken)) {
           setSession(serviceToken);
-          const response = await axios.get('/api/account/me');
-          const { user } = response.data;
+          const response = await axios.get('/api/v1/user/current');
+          const { currentUser } = response.data[0];
           dispatch({
             type: LOGIN,
             payload: {
               isLoggedIn: true,
-              user
+              currentUser
             }
           });
         } else {
@@ -80,24 +71,23 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     };
 
     init();
-  }, []);
+  }, [dispatch]);
 
   const login = async (username: string, password: string) => {
     const response = await axios.post('/api/v1/user/login', { username, password });
-    const { serviceToken, user } = response.data;
-    setSession(serviceToken);
+    const { token, info } = response.data[0];
+    setSession(token);
     dispatch({
       type: LOGIN,
       payload: {
         isLoggedIn: true,
-        user
+        info
       }
     });
   };
 
   const register = async (username: string, gender: string, email: string, team_id: string, password: string, sound: boolean) => {
     // todo: this flow need to be recode as it not verified
-    // const id = chance.bb_pin();
 
     const response = await axios.post('/api/v1/user/register', {
       username,
@@ -107,7 +97,8 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
       password,
       sound
     });
-    let users = response.data;
+    let users = response.data[0].accountResult;
+    console.log(users);
 
     if (window.localStorage.getItem('users') !== undefined && window.localStorage.getItem('users') !== null) {
       const localUsers = window.localStorage.getItem('users');

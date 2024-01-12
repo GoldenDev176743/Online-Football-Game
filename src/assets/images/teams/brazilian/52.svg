@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="3in"
+   height="3in"
+   viewBox="0 0 216 216"
+   id="svg13"
+   sodipodi:docname="goias.cdr"
+   inkscape:export-filename="goias.cdr.png"
+   inkscape:export-xdpi="48"
+   inkscape:export-ydpi="48"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs13" />
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="in" />
+  <g
+     id="Layer1003">
+    <path
+       d="m 108.0003,44.5808 c 34.9301,0 63.4192,28.4891 63.4192,63.4194 0,34.93 -28.4891,63.4194 -63.4192,63.4194 -34.9302,0 -63.4195,-28.4894 -63.4195,-63.4194 0,-34.9303 28.4893,-63.4194 63.4195,-63.4194 z"
+       style="fill:#007f46;fill-opacity:1;fill-rule:evenodd"
+       id="path10" />
+    <path
+       d="m 108.0003,47.2794 c 33.4435,0 60.7206,27.2768 60.7206,60.7208 0,33.4436 -27.2771,60.7208 -60.7206,60.7208 -33.4439,0 -60.7209,-27.2772 -60.7209,-60.7208 0,-33.444 27.277,-60.7208 60.7209,-60.7208 z"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#007f46;stroke-width:8.208;stroke-dasharray:none;stroke-opacity:1"
+       id="path11" />
+    <path
+       d="m 108.0003,68.1943 c 15.2417,0 28.5269,8.6433 35.211,21.2779 h -12.9172 c -5.3288,-6.3987 -13.349,-10.4829 -22.2938,-10.4829 -15.979,0 -29.0111,13.0318 -29.0111,29.0109 0,15.9788 13.0321,29.0109 29.0111,29.0109 12.1582,0 22.6087,-7.546 26.9115,-18.1932 H 97.206 v -10.8177 h 39.8051 4.5867 6.2082 c 0,21.9244 -17.8812,39.8056 -39.8057,39.8056 -21.9246,0 -39.8058,-17.8812 -39.8058,-39.8056 0,-21.9247 17.8812,-39.8059 39.8058,-39.8059 z"
+       style="fill:#007f46;fill-opacity:1;fill-rule:evenodd;stroke:#066e21;stroke-width:0.21;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none"
+       id="path12" />
+  </g>
+</svg>

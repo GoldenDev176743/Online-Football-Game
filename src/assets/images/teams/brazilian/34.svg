@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="3in"
+   height="3in"
+   viewBox="0 0 216 216"
+   id="svg14"
+   sodipodi:docname="cs_maruinense_se.cdr"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="in" />
+  <g
+     id="Layer1003">
+    <path
+       d="m 108,54.8048 c 29.2931,0 53.1952,23.9021 53.1952,53.1952 0,29.2932 -23.9021,53.1952 -53.1952,53.1952 -29.2932,0 -53.1952,-23.902 -53.1952,-53.1952 0,-29.2931 23.902,-53.1952 53.1952,-53.1952 z"
+       style="fill:#000000;fill-rule:evenodd"
+       id="path10" />
+    <path
+       d="m 89.6918,104.8653 21.2267,7.7151 v 34.6845 c -0.9594,0.0674 -1.9457,0.1081 -2.9185,0.1081 -6.5936,0 -12.8361,-1.6485 -18.3082,-4.54 v 9.1608 c 5.6479,2.3646 11.8361,3.6618 18.3082,3.6618 3.8507,0 7.6071,-0.4595 11.2146,-1.3377 V 106.7975 L 97.9744,99.0689 V 69.9243 c 3.2157,-0.8512 6.5667,-1.2971 10.0256,-1.2971 3.8914,0 7.6475,0.5675 11.2146,1.6349 V 61.6822 C 115.6071,60.8039 111.8507,60.3445 108,60.3445 c -6.4721,0 -12.6603,1.2972 -18.3082,3.6617 z"
+       style="display:inline;fill:#ffffff;fill-rule:evenodd"
+       id="path12" />
+    <path
+       d="m 145.238,95.2451 c -2.743,6.7693 -5.4857,13.5116 -8.2421,20.2809 l -0.1082,0.2837 0.1082,-0.2837 -3.9725,-15.106 v 48.1013 c -2.6076,1.6215 -5.3776,2.9997 -8.2825,4.0941 V 63.3846 c 2.8644,1.081 5.6073,2.4322 8.188,4.0265 l 3.5265,13.4306 2.2294,8.4853 5.1479,-12.6874 c 7.3639,8.3907 11.8227,19.3756 11.8227,31.3604 0,14.6332 -6.6478,27.7664 -17.1056,36.5219 v -11.755 c 5.5127,-6.7694 8.823,-15.4033 8.823,-24.7669 0,-4.4588 -0.7567,-8.7555 -2.1348,-12.7549 z"
+       style="display:inline;fill:#ffffff;fill-rule:evenodd"
+       id="path13" />
+    <path
+       d="M 84.1655,76.7071 C 74.7344,83.9088 68.6272,95.2721 68.6272,108 c 0,12.728 6.1072,24.0912 15.5383,31.2929 v 9.9446 C 69.9377,140.9818 60.3444,125.565 60.3444,108 c 0,-17.5651 9.5933,-32.9818 23.8211,-41.2375 z"
+       style="display:inline;fill:#ffffff;fill-rule:evenodd"
+       id="path14" />
+  </g>
+</svg>

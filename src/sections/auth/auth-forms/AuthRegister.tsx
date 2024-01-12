@@ -6,7 +6,6 @@ import {
   Autocomplete,
   Box,
   Button,
-  createFilterOptions,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -34,23 +33,20 @@ import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 import useAuth from 'hooks/useAuth';
+import useTeamInfo from 'hooks/useTeamInfo';
 import useScriptRef from 'hooks/useScriptRef';
 import { dispatch } from 'store';
 import { openSnackbar } from 'store/reducers/snackbar';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
-import axios from 'utils/axios';
 
 // types
 import { StringColorProps } from 'types/password';
-import { TeamInfoProps } from 'types/teaminfo';
 
 // assets
-import { EyeOutlined, EyeInvisibleOutlined, DownOutlined } from '@ant-design/icons';
-
-const filter = createFilterOptions<string>();
+import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
 const AllGender = ['Male', 'Female'];
-const AllTeams = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+const teamImages = require.context('assets/images/teams/brazilian', true);
 
 // ============================|| JWT - REGISTER ||============================ //
 
@@ -78,18 +74,7 @@ const AuthRegister = () => {
     changePassword('');
   }, []);
 
-  const [teamName, setTeamName] = useState<string[]>(['']);
-  const [teamInfo, setTeamInfo] = useState<TeamInfoProps[]>([{ _id: '', name: '', division: '' }]);
-
-  useEffect(() => {
-    const fetchTeamInfo = async () => {
-      const response = await axios.get('api/v1/team');
-      setTeamInfo(response.data[0].teams);
-      setTeamName(response.data[0].teams.map((team: TeamInfoProps) => team.name));
-    };
-
-    fetchTeamInfo();
-  }, []);
+  const { teamInfo, loading } = useTeamInfo();
 
   return (
     <>
@@ -134,7 +119,7 @@ const AuthRegister = () => {
               }, 1500);
             }
           } catch (err: any) {
-            console.error('error----------------->', err);
+            console.error(err);
             if (scriptedRef.current) {
               setStatus({ success: false });
               setErrors({ submit: err[0].message });
@@ -161,7 +146,7 @@ const AuthRegister = () => {
                 <Stack spacing={1}>
                   <InputLabel htmlFor="username-signup">User Name</InputLabel>
                   <OutlinedInput
-                    id="username-login"
+                    id="username-signup"
                     type="username"
                     value={values.username}
                     name="username"
@@ -183,7 +168,7 @@ const AuthRegister = () => {
                   <InputLabel htmlFor="gender">Gender</InputLabel>
                   <FormControl fullWidth>
                     <Select
-                      id="column-hiding"
+                      id="gender"
                       displayEmpty
                       {...getFieldProps('gender')}
                       onChange={(event: SelectChangeEvent<string>) => setFieldValue('gender', event.target.value as string)}
@@ -216,13 +201,13 @@ const AuthRegister = () => {
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
-                    id="email-login"
+                    id="email-signup"
                     type="email"
                     value={values.email}
                     name="email"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="demo@company.com"
+                    placeholder="demo@gmail.com"
                     inputProps={{}}
                   />
                   {touched.email && errors.email && (
@@ -287,76 +272,41 @@ const AuthRegister = () => {
                   <InputLabel htmlFor="teamname">Team</InputLabel>
                   <Grid item xs={12}>
                     <Autocomplete
+                      id="teamname-select"
                       fullWidth
-                      value={values.teamname}
                       disableClearable
                       onChange={(event, newValue) => {
-                        const teamExist = teamName.includes(newValue);
+                        const teamExist = teamInfo.includes(newValue);
                         if (!teamExist) {
-                          const matchData = newValue.match(/"((?:\\.|[^"\\])*)"/);
+                          const matchData = newValue.name.match(/"((?:\\.|[^"\\])*)"/);
                           setFieldValue('teamname', matchData && matchData[1]);
                         } else {
-                          setFieldValue('teamname', newValue);
+                          setFieldValue('teamname', newValue.name);
                         }
                       }}
-                      filterOptions={(options, params) => {
-                        const filtered = filter(options, params);
-                        const { inputValue } = params;
-                        const isExisting = options.some((option) => inputValue === option);
-                        if (inputValue !== '' && !isExisting) {
-                          filtered.push(`Add "${inputValue}"`);
-                        }
-                        return filtered;
-                      }}
-                      selectOnFocus
-                      clearOnBlur
+                      options={teamInfo}
+                      loading={loading}
                       autoHighlight
-                      handleHomeEndKeys
-                      id="free-solo-with-text-demo"
-                      options={teamName}
-                      getOptionLabel={(option: string) => {
-                        let value = option;
-                        const jobExist = AllTeams.includes(option);
-                        if (!jobExist) {
-                          const matchData = option.match(/"((?:\\.|[^"\\])*)"/);
-                          if (matchData && matchData[1]) value = matchData && matchData[1];
-                        }
-                        return value;
-                      }}
-                      renderOption={(props, option) => {
-                        return (
-                          <Box component="li" {...props}>
-                            {option}
-                          </Box>
-                        );
-                      }}
-                      freeSolo
+                      getOptionLabel={(option) => option.name}
+                      renderOption={(props, option) => (
+                        <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                          <img loading="lazy" width="20" src={teamImages(`./${option.avatar}`)} alt={option.avatar} />
+                          {option.name}
+                        </Box>
+                      )}
                       renderInput={(params) => (
                         <TextField
                           {...params}
-                          name="team_id"
-                          error={touched.teamname && Boolean(errors.teamname)}
-                          helperText={touched.teamname && errors.teamname && errors.teamname}
-                          placeholder="Select Team"
-                          InputProps={{
-                            ...params.InputProps,
-                            // sx: { bgcolor: 'grey.0' },
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <DownOutlined />
-                                {/* <ArrowDropDown sx={{ color: 'text.primary' }} /> */}
-                              </InputAdornment>
-                            )
+                          id="teamname"
+                          placeholder="Choose a country"
+                          inputProps={{
+                            ...params.inputProps,
+                            autoComplete: 'new-password' // disable autocomplete and autofill
                           }}
                         />
                       )}
                     />
                   </Grid>
-                  {/* {errors.teamname && (
-                    <FormHelperText error id="standard-weight-helper-text-email-login" sx={{ pl: 1.75 }}>
-                      {errors.teamname}
-                    </FormHelperText>
-                  )} */}
                 </Stack>
               </Grid>
               <Grid item xs={12} md={4} alignSelf={'center'}>

@@ -5,13 +5,15 @@ import { combineReducers } from 'redux';
 import menu from './menu';
 import snackbar from './snackbar';
 import chat from './chat';
+import auth from './auth';
 
 // ==============================|| COMBINE REDUCERS ||============================== //
 
 const reducers = combineReducers({
   menu,
   snackbar,
-  chat
+  chat,
+  auth
 });
 
 export default reducers;

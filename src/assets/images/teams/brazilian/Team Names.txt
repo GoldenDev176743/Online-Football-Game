@@ -1,0 +1,105 @@
+1 15 de Novembro 
+2 ABC
+3 Bahia de Feira
+4 Cabense
+5 Alagoas
+6 Amapa
+7 America Amazonas
+8 America de Natal
+9 America MG
+10 Andradina
+11 Atletico MG
+12 Atletico AC
+13 Atletico GO
+14 Athletico PR
+15 Auto Esporte
+16 Avai
+17 Bahia
+18 Bangu
+19 Botafogo
+20 Botafogo PB
+21 Botafogo SP
+22 Bragantino
+23 Brasil de Pelotas
+24 Brusque
+25 Carlos Barbosa
+26 Castanhal
+27 Caxias
+28 Ceara
+29 Chapecoense
+30 Corinthians
+31 Corisabba
+32 Criuciuma
+33 Cruzeiro
+34 CS Maruiense
+35 Cuiaba
+36 Deportivo Capixaba
+37 Pelotas
+38 São Bento 
+39 9 de Julho
+40 Estanciano
+41 Fast
+42 Ferroviaria Sp
+43 Ferroviario
+44 Figueirense
+45 Flamengo
+46 Fluminense
+47 Fortaleza
+48 Galicia
+49 Gama
+50 Goianesia
+51 Garapiuna
+52 Goias
+53 Gremio
+54 Novo Horizontino
+55 Guarani
+56 Ibis
+57 Internacional
+58 Ipatinga
+59 Itabuna
+60 Ituano
+61 Joaçaba
+62 Joinville
+63 Juventude
+64 Juventus SP
+65 Londrina
+66 Macapa
+67 Madureira
+68 Marilia
+69 Mirassol
+70 Mixto
+71 Nautico
+72 Olaria
+73 Palmas
+74 Palmeiras
+75 Parana
+76 Paysandu
+77 Pinheirense
+78 Ponte Preta
+79 Portuguesa
+80 Remo
+81 Rio Branco
+82 Rio Negro
+83 Sampaio Correa
+84 Santa Cruz
+85 Santarem
+86 Santos
+87 Sao Jose
+88 Sao Caetano
+89 Sao Paulo
+90 Sergipe
+91 Sinop
+92 Sport
+93 Tunaluso
+94 Tupi
+95 Vasco
+96 Vila Nova
+97 Vilhena
+98 Vitoria
+99 Vitoria ES
+100 Volta Redonda
+101 XV de Jaú
+102 XV Novembro
+103 Ypiranga AP
+104 Coritiba
+

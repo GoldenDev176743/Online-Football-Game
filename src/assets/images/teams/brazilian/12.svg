@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="2.3633029in"
+   height="1.4632947in"
+   viewBox="0 0 170.15781 105.35722"
+   id="svg13"
+   sodipodi:docname="atletico_acreano.cdr"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs13" />
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="in" />
+  <g
+     id="Layer1003"
+     transform="matrix(1,0,0,1.0419688,-22.920898,-59.85402)">
+    <path
+       d="m 107.9997,57.4432 -85.0788,50.5458 85.0788,50.5678 85.079,-50.5678 z"
+       style="fill:#003687;fill-rule:evenodd"
+       id="path10" />
+    <path
+       d="M 107.9997,153.046 32.2132,107.989 107.9997,62.9537 183.7861,107.989 Z"
+       style="fill:#ffffff;fill-rule:evenodd"
+       id="path11" />
+    <path
+       d="m 110.6578,69.4585 v 77.083 l 6.2021,-3.6738 v -30.427 h 20.2703 v 18.3686 l 6.202,-3.6738 V 88.8643 Z m 26.4724,36.8018 H 116.8599 V 80.0042 l 20.2703,12.0368 z"
+       style="fill:#003687;fill-rule:evenodd"
+       id="path12" />
+    <path
+       d="m 72.6673,127.1355 6.2021,3.6738 v -18.3686 h 20.2703 v 30.427 l 6.2021,3.6738 V 69.4585 L 72.6673,88.8643 Z M 78.8694,92.041 99.1397,80.0042 v 26.2561 H 78.8694 Z"
+       style="fill:#003687;fill-rule:evenodd"
+       id="path13" />
+  </g>
+</svg>
